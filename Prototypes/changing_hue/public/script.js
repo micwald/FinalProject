@@ -24,8 +24,6 @@ function onData(e) {
     showData(e);
     changeColor(e);// runs the changeColor function
     //accelerationColor(e);
-
-
   }
   
 }
