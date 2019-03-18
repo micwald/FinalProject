@@ -23,7 +23,7 @@ function onData(e) {
   if (!frozen) {
     showData(e);
     changeColor(e);// runs the changeColor function
-    accelerationColor(e);
+    //accelerationColor(e);
 
 
   }
