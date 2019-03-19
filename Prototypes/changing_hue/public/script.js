@@ -1,5 +1,6 @@
 var socket = null;
 var frozen = false;
+let rot;
 
 if (document.readyState != 'loading') ready();
 else document.addEventListener('DOMContentLoaded', ready);
@@ -18,41 +19,89 @@ function ready() {
 function onData(e) {
   var accel = e.accel;
   var accelGrav = e.accelGrav;
-  var rot = e.rot
+  rot = e.rot
   console.log(rot.alpha);
   if (!frozen) {
     showData(e);
-    changeColor(e);// runs the changeColor function
-    accelerationColor(e);
-
-
+    //changeColor(e);// runs the changeColor function
+    //accelerationColor(e);
+    //changeColorPurple(e);
   }
   
 }
 
 // a function takes the the value of the alpha rotation and changes the hue color of green according to the rotation value
+var purpleButton = document.getElementById('purple');
+var greenButton =  document.getElementById('green');
 
-function changeColor(event){
-  if(event.rot.alpha <= 60){
-    document.body.style.backgroundColor = "#00ff00";
-    console.log(" neon light green") 
-  } else if(event.rot.alpha <= 100) {
-    document.body.style.backgroundColor = "#00e500";
-    console.log("light green");
-  } else if (event.rot.alpha <= 180){
-    document.body.style.backgroundColor = "#00cc00";
-    console.log("green1");
-  }else if(event.rot.alpha <= 250){
-    document.body.style.backgroundColor = "#00b200";
-    console.log("green2");
-  }else if (event.rot.alpha <= 350){
-    document.body.style.backgroundColor="#009900";
-    console.log("green3");
-  } else{
-    document.body.style.backgroundColor="#007f00";
-    console.log("dark green");
+purpleButton.addEventListener("click", function(){
+  console.log("hi")
+});
+
+greenButton.addEventListener("click", function(){
+  console.log("no");
+})
+
+
+let changePurple = function changeColorPurple(event){
+    console.log("It happened,", rot);
+    if(rot.alpha <= 60){
+      document.body.style.backgroundColor = "#bba3d0";
+      console.log("purple1") 
+    } else if(rot.alpha <= 100) {
+      document.body.style.backgroundColor = "#aa8cc5";
+      console.log("purple2");
+    } else if (rot.alpha <= 180){
+      document.body.style.backgroundColor = "#9975b9";
+      console.log("purple3");
+    }else if(rot.alpha <= 250){
+      document.body.style.backgroundColor = "#885ead";
+      console.log("purple4");
+    }else if (rot.alpha <= 350){
+      document.body.style.backgroundColor="#7647a2";
+      console.log("purple5");
+    } else{
+      document.body.style.backgroundColor="#7647a2";
+      console.log("purple6");
+    }
   }
-}
+
+
+let changeGreen = function changeColor(event){
+    console.log("Green button is pressed");
+    if(rot.alpha <= 60){
+      document.body.style.backgroundColor = "#00ff00";
+      console.log(" neon light green") 
+    } else if(rot.alpha <= 100) {
+      document.body.style.backgroundColor = "#00e500";
+      console.log("light green");
+    } else if (rot.alpha <= 180){
+      document.body.style.backgroundColor = "#00cc00";
+      console.log("green1");
+    }else if(rot.alpha <= 250){
+      document.body.style.backgroundColor = "#00b200";
+      console.log("green2");
+    }else if (rot.alpha <= 350){
+      document.body.style.backgroundColor="#009900";
+      console.log("green3");
+    } else{
+      document.body.style.backgroundColor="#007f00";
+      console.log("dark green");
+    }
+   }
+
+
+   purpleButton.onclick = changePurple;
+   greenButton.onclick = changeGreen;
+
+ 
+
+//function for purple color
+
+
+
+
+
 // function for chnaging color depending on the value of acceleration or beta rotation 
 /*function accelerationColor(event){
 if(event.rot.beta >= 1){
