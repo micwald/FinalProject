@@ -9,7 +9,10 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 h1 {
-  color: darkred;
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 a, a:link, a:visited {
   color: darkred;
@@ -28,4 +31,108 @@ a:hover {
   width: 10rem;
   border: 1px solid black;
   background: white;
+}
+
+li:nth-child(1) {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+  
+}
+
+li:nth-child(2) {
+  border: 1px solid blue;
+  background-color: blue;
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+  
+}
+
+li:nth-child(3){
+  border: 1px solid greenyellow;
+  background-color: greenyellow;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+li:nth-child(4){
+  border: 1px solid yellow;
+  background-color: yellow;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+li:nth-child(5){
+  border: 1px solid orange;
+  background-color: orange;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+li:nth-child(6){
+  border: 1px solid purple;
+  background-color: purple;
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+li:nth-child(7){
+  border: 1px solid pink;
+  background-color: pink;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+li:nth-child(8){
+  border: 1px solid cyan;
+  background-color: cyan;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+li:nth-child(9){
+  border: 1px solid rgb(117, 69, 69);
+  background-color: rgb(117, 69, 69);
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+#block ul li{
+  display: block;
+  width: 100px;
+  text-align: center;
+  
+}
+
+ul {
+  text-align: center;
+  list-style: inside;
+}
+
+#table {
+  width: 480px;
+  text-align: center;
+}
+
+#listItems{
+  width: 100px;
 }

@@ -32,6 +32,8 @@ enum
   MsgPosition,    // 4
 };
 
+
+
 void setup()
 {
   Serial.begin(115200);
@@ -69,26 +71,36 @@ void loop()
   //check the text and give different colors
   for (int i = 0; i < numLeds; i++)
   {
-    switch(messageFromPC[0])
+    switch(messageFromPC[0]) //it takes the first letter and set's the leds color
     {
-      case 'g':
+       case 'g': //green
         leds.setPixelColor(i, 255, 0, 0);
         break;
-      case 'r':
+      case 'r': //red
         leds.setPixelColor(i, 0, 255, 0);
         break;
       case 'b':
+        if(messageFromPC[2] == 'u') //we check if the third letter is 'u' for blue
         leds.setPixelColor(i, 0, 0, 255);
+        else if(messageFromPC[2] == 'o') //brown
+        leds.setPixelColor(i, 69, 139, 19);
         break;
-      case 'y':
+      case 'y': //yellow
         leds.setPixelColor(i, 255,255,0);
         break;
-      case 'c':
+      case 'c': //cyan
         leds.setPixelColor(i, 128,0,128);
         break;
       case 'p':
-        leds.setPixelColor(i, 0,255,255);
+        if(messageFromPC[2] == 'r') //purple
+        leds.setPixelColor(i, 0,128,128);
+        else if(messageFromPC[2] == 'n') //pink
+        leds.setPixelColor(i, 105, 255, 180);
         break;
+      case 'o': //orange
+         leds.setPixelColor(i, 140,255,0);
+      default: // if none of the above, set the color to white
+        leds.setPixelColor(i, 255,255,255);
     }
      leds.show();
     
@@ -101,9 +113,8 @@ void loop()
   Serial.println(sensorValue);
 
 
-  // wait 2 milliseconds before the next loop for the analog-to-digital
-  // converter to settle after the last reading:
-  delay(1000);
+ //We changed the loop from 1 second to 100 milliseconds 
+  delay(100);
 }
 
 void recvWithStartEndMarkers()
