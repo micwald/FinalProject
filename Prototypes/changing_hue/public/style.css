@@ -9,11 +9,11 @@ html {
 }
 body {
   background-color: whitesmoke;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva, Verdana', sans-serif;
 }
 h1 {
   font-size: 70px;
-  color: black;
+  color: darkred;
   padding-bottom: 30px;
   padding-top: 70px;
 }
@@ -23,36 +23,18 @@ a, a:link, a:visited {
 a:hover {
   color: black;
 }
-.button{
-  border-radius: 25px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none !important;
-  display: inline-block;
-  font-size: 16px;
-  margin-left: 15px;
-  outline: none;
-  margin: 0 auto;
-  margin-bottom: 40px;
 
-}
-#green{
-  background-color: green;
-  
-}
 
-#purple{
-  background-color:purple;
-}
 
 #last>table {
   border: 1px solid gray;
- 
+
 }
+
 #last td {
   width: 5rem;
 }
+  
 #last.frozen {
   background-color: lightblue;
 }
