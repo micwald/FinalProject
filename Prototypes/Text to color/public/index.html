@@ -8,26 +8,29 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>ws-serial-bridge</h1>
-    <h2>Send</h2>
+    <h1>Change the color of the lights</h1>
+    <h2>Send the text</h2>
     <form id="sendForm">
-     <input type="text" id="sendtoSerial"></input>
+     <input type="text" value="<red>" id="sendtoSerial"></input>
       <input type="submit" value="Send">
     </form>
-    <div>
-      <h4>Choose one of the following colors and send it</h4>
-      <ul>
+    <div id="table">
+      <h4>Enter above one of the following colors and send it</h4>
+      <div id="block">
+      <ul><div id="listItems">
         <li>Red</li>
         <li>Blue</li>
         <li>Green</li>
         <li>Yellow</li>
+        <li>Orange</li>
         <li>Purple</li>
+        <li>Pink</li>
         <li>Cyan</li>
+        <li>Brown</li>
       </ul>
-    
+      </div>
     </div>
-    <h2>Received</h2>
-    <span id="lastMsg">(nothing)</span>
+    </div>
     <script type="module" src="reconnecting-websocket.js"></script>
     <script src="script.js"></script>
   </body>
