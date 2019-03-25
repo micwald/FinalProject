@@ -1,0 +1,155 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: whitesmoke;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+h1 {
+  font-size: 50px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+a,
+a:link,
+a:visited {
+  color: darkred;
+}
+a:hover {
+  color: black;
+}
+
+#lastMsg {
+  font-family: monospace;
+}
+
+#sentCommands {
+  overflow: scroll;
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid black;
+  background: white;
+}
+
+.red {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.blue {
+  border: 1px solid blue;
+  background-color: blue;
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.green {
+  border: 1px solid greenyellow;
+  background-color: greenyellow;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.yellow {
+  border: 1px solid yellow;
+  background-color: yellow;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.orange {
+  border: 1px solid orange;
+  background-color: orange;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.purple {
+  border: 1px solid purple;
+  background-color: purple;
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.pink {
+  border: 1px solid pink;
+  background-color: pink;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.cyan {
+  border: 1px solid cyan;
+  background-color: cyan;
+  color: black;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.brown {
+  border: 1px solid rgb(117, 69, 69);
+  background-color: rgb(117, 69, 69);
+  color: white;
+  display: inline;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+#block ul li {
+  display: block;
+  width: 100px;
+  text-align: center;
+}
+
+ul {
+  text-align: center;
+  list-style: inside;
+}
+
+#table {
+  width: 480px;
+  text-align: center;
+}
+
+#listItems {
+  width: 100px;
+}
+
+#block{
+  width: 50px;
+  height: 50px;
+  padding:40px;
+  margin: 20px;
+  border: 1px solid black;
+}
+
+.blocks{
+  float: left;
+  width: 40px;
+  height: 20px;
+  border: 1px solid black;
+}

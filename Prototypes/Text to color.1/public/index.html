@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ws-serial-bridge</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Change the color of the lights</h1>
+    <h2>Click on the color</h2>
+    <form id="sendForm">
+        <button type="submit" id="sendtoSerial" value="Red" class="Sending"></button>
+        <input type="submit" id="sendtoSerial" value="Red" class="red" onclick="buttonRed()"></input>
+        <input type="submit" id="sendtoSerial" value="Blue" class="blue" onclick="buttonBlue()"></input>
+        <input type="submit" id="sendtoSerial" value="Green" class="green" onclick="buttonGreen()"></input>
+        <input type="submit" id="sendtoSerial" value="Yellow" class="yellow" onclick="buttonYellow()"></input>
+        <input type="submit" id="sendtoSerial" value="Orange" class="orange" onclick="buttonOrange()"></input>
+        <input type="submit" id="sendtoSerial" value="Purple" class="purple" onclick="buttonPurple()"></input>
+        <input type="submit" id="sendtoSerial" value="Pink" class="pink" onclick="buttonPink()"></input>
+        <input type="submit" id="sendtoSerial" value="Cyan" class="cyan" onclick="buttonCyan()"></input>
+        <input type="submit" id="sendtoSerial" value="Brown" class="brown" onclick="buttonBrown()"></input>
+    </form>
+    <div id="block"></div>
+    <div id="potentiometer">
+      <div class="blocks" id="1"></div>
+      <div class="blocks" id="2"></div>
+      <div class="blocks" id="3"></div>
+      <div class="blocks" id="4"></div>
+      <div class="blocks" id="5"></div>
+      <div class="blocks" id="6"></div>
+      <div class="blocks" id="7"></div>
+      <div class="blocks" id="8"></div>
+      <div class="blocks" id="9"></div>
+      <div class="blocks" id="10"></div>
+      <div class="blocks" id="11"></div>
+    </div>
+    <script type="module" src="reconnecting-websocket.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
