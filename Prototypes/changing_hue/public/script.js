@@ -1,6 +1,8 @@
 var socket = null;
 var frozen = false;
 let rot;
+//Global variable for the buttonState is false
+let buttonState= false;
 
 if (document.readyState != 'loading') ready();
 else document.addEventListener('DOMContentLoaded', ready);
@@ -23,125 +25,59 @@ function onData(e) {
   console.log(rot.alpha);
   if (!frozen) {
     showData(e);
-    //flipDim(e);// runs the changeColor function
+ //Calling the dimming function
+    flipDim(e); 
     //accelerationColor(e);
-   dimRotation(e);
-  }
-  
+  } 
 }
 
+//Getting the button element and storing it in a variable
+let offButton = document.getElementById("off");
 
-//Using the DOM to store the html element in a variable
-/*var purpleButton = document.getElementById('purple');
-var greenButton =  document.getElementById('green');
-*/
-//Check whether the buttons work when pressed, there should be either hi or no logged to the console
-/*purpleButton.addEventListener("click", function(){
-  console.log("hi")
-});
-
-greenButton.addEventListener("click", function(){
-  console.log("no");
-})*/
-
-
-// a function takes the the value of the alpha rotation and changes the hue color of purple according to the rotation value
-//let changePurple = 
-
-/*function flipDim(event){
-    console.log("It happened,", rot);
-    if(rot.alpha <= 60){
-      document.body.style.backgroundColor = "#bba3d0";
-      console.log("purple1") 
-    } else if(rot.alpha <= 100) {
-      document.body.style.backgroundColor = "#aa8cc5";
-      console.log("purple2");
-    } else if (rot.alpha <= 180){
-      document.body.style.backgroundColor = "#9975b9";
-      console.log("purple3");
-    }else if(rot.alpha <= 250){
-      document.body.style.backgroundColor = "#885ead";
-      console.log("purple4");
-    }else if (rot.alpha <= 350){
-      document.body.style.backgroundColor="#7647a2";
-      console.log("purple5");
-    } else{
-      document.body.style.backgroundColor="#7647a2";
-      console.log("purple6");
-    }
-  }*/
-
-//rotate to dim the lights
- function dimRotation(event){
-    console.log("It happened,", rot);
-    if(rot.alpha <= 72){
-      document.body.style.backgroundColor = "#ffff00";
-      console.log("purple1") 
-    } else if(rot.alpha <= 144) {
-      document.body.style.backgroundColor = "#ffea00";
-      console.log("purple2");
-    } else if (rot.alpha <= 216){
-      document.body.style.backgroundColor = "#ffd500";
-      console.log("purple3");
-    }else if(rot.alpha <= 288){
-      document.body.style.backgroundColor = "#ffbf00";
-      console.log("purple4");
-    } else{
-      document.body.style.backgroundColor="#000000";
-      console.log("purple6");
-    }
-  }
-
-
-  
-
-
-
-  
-  // a function takes the the value of the alpha rotation and changes the hue color of green according to the rotation value
-
-/*let changeGreen = function changeColor(event){
-    console.log("Green button is pressed");
-    if(rot.alpha <= 60){
-      document.body.style.backgroundColor = "#00ff00";
-      console.log(" neon light green") 
-    } else if(rot.alpha <= 100) {
-      document.body.style.backgroundColor = "#00e500";
-      console.log("light green");
-    } else if (rot.alpha <= 180){
-      document.body.style.backgroundColor = "#00cc00";
-      console.log("green1");
-    }else if(rot.alpha <= 250){
-      document.body.style.backgroundColor = "#00b200";
-      console.log("green2");
-    }else if (rot.alpha <= 350){
-      document.body.style.backgroundColor="#009900";
-      console.log("green3");
-    } else{
-      document.body.style.backgroundColor="#007f00";
-      console.log("dark green");
-    }
-   }
-*/
-
-  //Calling the function using onclick event 
-   /*purpleButton.onclick = changePurple;
-   greenButton.onclick = changeGreen;*/
-
+/*Function for the off button, if the buttonState is false begin the motion stream, if the buttonState is
+true stop the motion stream and change the background-color to black*/
+function off() {
+ if(buttonState ===true){
+   buttonState = false;
+  console.log("test");
+  document.getElementById("off").value ="Off";
+  document.getElementById("off").style.backgroundColor = "#8b0000"
+  document.getElementById("heading").style.color ="#000000";
  
-
-
-// function for chnaging color depending on the value of acceleration or beta rotation 
-/*function accelerationColor(event){
-if(event.rot.beta >= 1){
-  document.body.style.backgroundColor ="yellow"
-  console.log("yellow");
-} else if(event.rot.beta <= 1 ){
-  document.body.style.backgroundColor ="orange";
-  console.log("orange");
+} else {
+ buttonState = true;
+ document.body.style.backgroundColor = "#000000";
+ document.getElementById("off").value= "On";
+ document.getElementById("off").style.backgroundColor = "#006400"
+ document.getElementById("heading").style.color ="#ffffff";
+}
 }
 
-}*/
+//function for dimming the lights, takes the value of rot.beta and changes the background-color according to the set rounded rot.beta values
+function flipDim(event){
+  if(buttonState == false){
+    console.log(buttonState);
+  if(Math.round(event.rot.beta) <= 20){
+    document.body.style.backgroundColor = "#fffc3a";
+    console.log("#fffc3a") 
+  } else if(Math.round(event.rot.beta) >= 30 && Math.round(event.rot.beta) <=60) {
+    document.body.style.backgroundColor = "#ffee25";
+    console.log("##ffee25");
+  } else if (Math.round(event.rot.beta) >= 70 && Math.round(event.rot.beta) <=90){
+    document.body.style.backgroundColor = "#ffdf00";
+    console.log("#ffdf00");
+  }else if(Math.round(event.rot.beta) >= 100 && Math.round(event.rot.beta) <=120){
+    document.body.style.backgroundColor = "#efd100";
+    console.log("#efd100");
+  }else if (Math.round(event.rot.beta) >=130 && Math.round(event.rot.beta) <=150){
+    document.body.style.backgroundColor="#dfc200";
+    console.log("#dfc200");
+  }else if(Math.round(event.rot.beta) >=160 && Math.round(event.rot.beta) <=180){
+    document.body.style.backgroundColor="#cfb400";
+    console.log("#cfb400");
+  } 
+}
+}
 
 function initWebsocket() {
   const url = 'ws://' + location.host + '/ws';
@@ -161,12 +97,13 @@ function initWebsocket() {
 }
 
 function showData(m) {
-  let html = 'accel';
-  html += '<table><tr><td>' + m.accel.x.toFixed(3) + '</td><td>' + m.accel.y.toFixed(3) + '</td><td>' + m.accel.z.toFixed(3) + '</tr></table>';
+  let html = '';
+  //Removing the table from canvas
+  /*html += '<table><tr><td>' + m.accel.x.toFixed(3) + '</td><td>' + m.accel.y.toFixed(3) + '</td><td>' + m.accel.z.toFixed(3) + '</tr></table>';
   html += '</table>';
   
   //Changes the background color of html depending on the values of alpha, beta and gama rotation
-  /*document.body.style.backgroundColor = "rgb("+Math.round(m.rot.alpha.toFixed(3)) +","+ Math.round(m.rot.beta.toFixed(3))+","+ Math.round(m.rot.gamma.toFixed(3))+")";*/
+  //document.body.style.backgroundColor = "rgb("+Math.round(m.rot.alpha.toFixed(3)) +","+ Math.round(m.rot.beta.toFixed(3))+","+ Math.round(m.rot.gamma.toFixed(3))+")";
  
   html += 'rot';
   html += '<table><tr><td>' + m.rot.alpha.toFixed(3) + '</td><td>' + m.rot.beta.toFixed(3) + '</td><td>' + m.rot.gamma.toFixed(3) + '</tr></table>';
@@ -176,6 +113,6 @@ function showData(m) {
   
   html += 'accelGrav';
   html += '<table><tr><td>' + m.accelGrav.x.toFixed(3) + '</td><td>' + m.accelGrav.y.toFixed(3) + '</td><td>' + m.accelGrav.z.toFixed(3) + '</tr></table>';
-  html += '</table>';
+  html += '</table>';*/
   document.getElementById('last').innerHTML = html;
 }
