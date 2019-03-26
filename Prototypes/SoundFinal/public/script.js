@@ -27,7 +27,29 @@ function onDocumentReady() {
                  });
                  return;          
              }
-         }         
+         }  
+         
+        // console.log(d);
+         if(d[0]=='R'){
+            document.getElementById("p1").innerHTML = "Sound Sensitivity is high, Light On with Red Color";
+            document.getElementById("Rect").setAttribute("style",style="fill:rgb(255,0,0);stroke-width:3;stroke:rgb(0,0,0)");
+         }else if(d[0]=='B'){
+            document.getElementById("p1").innerHTML = "Sound Sensitivity is medium, Light On with Blue Color";
+            document.getElementById("Rect").setAttribute("style",style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)");
+
+         }else if(d[0]=='G'){
+            document.getElementById("p1").innerHTML = "Sound Sensitivity is low, Light On with Green Color";
+            document.getElementById("Rect").setAttribute("style",style="fill:rgb(0,255,0);stroke-width:3;stroke:rgb(0,0,0)");
+
+         }else if(d[0]=='O'){
+            document.getElementById("p1").innerHTML = "Light is Off";
+            document.getElementById("Rect").setAttribute("style",style="fill:rgb(0,0,0);stroke-width:3;stroke:rgb(0,0,0)");
+
+
+         }
+        
+
+    
         
         
         // Doesn't seem to be formatted correctly, just display as-is
