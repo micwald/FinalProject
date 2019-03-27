@@ -15,7 +15,7 @@ function onDocumentReady() {
         // Debug: see raw received message
         //console.log(evt.data);
         
-        // Parse message, assuming <Text,Int>
+        // Parse message, assuming <Text>
         var d = evt.data.trim();
         if (d.charAt(0) == '<' && d.charAt(d.length-1) == '>') {
             // Looks legit
