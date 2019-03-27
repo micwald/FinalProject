@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ws-serial-bridge</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Changing color of light based on sound sensitivity</h1>
+    <h2>Use Setting</h2>
+    <p>The idea is control light color with sound, it can be used for example in a living room or at the entrance place</p>
+    <h2>Instructions</h2>
+      <p>&nbsp;1. If the light is off and if sound level exceeds to predefined threshold, based on intensity, light will switch on with corresponding color</p>
+      <p>&nbsp;2. Sound sensitivity is divided into three levels
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;If sound intensity exceeds 560, light will switch on with Green color</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;If sound intensity exceeds 570, light will switch on with Blue color</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;If sound intensity exceeds 580, light will switch on with Red color</p>
+      <p>&nbsp;3. If sound intensity exceeds 560 and light is already switched on, it will turn off</p>
+    <h2>Send</h2>
+    <form id="sendForm">
+     <input type="text" value="<590>" id="sendtoSerial"></input>
+      <input type="submit" value="Send">
+    </form>
+    <div id="table">
+        <h4>Enter above one of the following values and send it</h4>
+        <div id="block">
+        <ul><div id="listItems">
+          <li>590
+          <li>575</li>
+          <li>565</li>
+          <li>562</li>
+        </ul>
+        </div>
+      </div>
+      </div>
+      <h2>Light Status</h2>
+      <p id="p1">Light is off</p>
+      <svg width="400" height="110">
+        <rect id = "Rect" width="100" height="100" style="fill:rgb(0,0,0);stroke-width:3;stroke:rgb(0,0,0)" />
+      </svg>
+
+    <script type="module" src="reconnecting-websocket.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
