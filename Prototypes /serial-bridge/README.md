@@ -50,3 +50,5 @@ Bundles:
 
 Credits:
 * Arduino serial I/O: http://forum.arduino.cc/index.php?topic=396450
+
+Contributors Bahrudin Srebrenica
