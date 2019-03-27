@@ -4,13 +4,14 @@
     <meta charset="utf-8" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>ws-serial-bridge</title>
+    <title>Text to Color</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>Change the color of the lights</h1>
     <h2>Click on the color</h2>
     <form id="sendForm">
+      <!--The buttons are made as an input type so they work similar to the send button in the orignal-->
         <button type="submit" id="sendtoSerial" value="Red" class="Sending"></button>
         <input type="submit" id="sendtoSerial" value="Red" class="red" onclick="buttonRed()"></input>
         <input type="submit" id="sendtoSerial" value="Blue" class="blue" onclick="buttonBlue()"></input>
@@ -22,7 +23,8 @@
         <input type="submit" id="sendtoSerial" value="Cyan" class="cyan" onclick="buttonCyan()"></input>
         <input type="submit" id="sendtoSerial" value="Brown" class="brown" onclick="buttonBrown()"></input>
     </form>
-    <div id="block"></div>
+    <div id="block"></div> <!--We create 11 different blocks since the value of the potentiometer
+    is split of 11 equal parts-->
     <div id="potentiometer">
       <div class="blocks" id="1"></div>
       <div class="blocks" id="2"></div>

@@ -1,30 +1,27 @@
 # motion-stream
 
-This example streams motion and orientation data from a mobile device via websockets to a server. From there, the server distributes it to every connected client.
+This example streams motion and orientation data from a mobile device via websockets to a server. From there, the server distributes it to every connected client. (This is taken from Clint Heyer's README.md file)
 
-It's [also available on Glitch](https://glitch.com/edit/#!/remix/ch-motion-data)
+In our prototype, motion stream was used to demonstrate an interaction with a pillow to dim the lights. The background color of the canvas changes to different hues of color yellow depending on the orientation of the pillow. This was done by creating a conditional and setting the beta rotation to specific values.
+
+Additionally, an off button was created in html, styled in css and its functionality made in JavaScript. If the buttonState is true, the motion stream is postponed and the background color changes to black. This was button was made based on the survey we made, where most of the people wanted to interact with the lights without standing up or moving from their sofa.
 
 # Setup 
-
-In the directory you've got this sample:
+ 
+ In the terminal run the following commands:
 
 `$ npm install`
 
-This will install the necessary packages from npm.
+Running npm install will install the node modules of the package.
 
 # Running
 
-Once set up, you can boot up your server with
+To run the server, enter the following command in the terminal:
 
 `$ npm start`
 
-It will continue running. To stop it again, press CTRL+C (PC) or CMD+C (Mac).
+To stop the server running press press CTRL+C (PC) or CMD+C (Mac).
 
-# Uses
+# Contributors 
 
-* [reconnecting-websocket](https://github.com/pladaria/reconnecting-websocket) wrapper (v3.2.2)
-
-# Read more
-
-* [Device Orientation & Motion](https://developers.google.com/web/fundamentals/native-hardware/device-orientation/) (Google)
-* [Device Orientation](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) (MDN)
+Melika Ljutovic

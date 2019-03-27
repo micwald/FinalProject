@@ -2,7 +2,7 @@ var lastMsgEl = null;
 if (document.readyState != 'loading') onDocumentReady();
 else document.addEventListener('DOMContentLoaded', onDocumentReady);
 
-//get the blocks to color
+//get the blocks from the html to color them
 let block1 = document.getElementById('1');
 let block2 = document.getElementById('2');
 let block3 = document.getElementById('3');
@@ -26,13 +26,14 @@ function onDocumentReady() {
     lastMsgEl = document.getElementById('lastMsg');
 
     socket.onmessage = function(evt) {
-        //Debug: see raw received message
-        //console.log(evt.data);
-        
-        // Parse message, assuming <Text,Int>
+
+        // Parse message
         var d = evt.data.trim();
+        
+        /*I added function to check the value from the potentiometer
+        and color the blocks according to it. The value goes from 0 to 1023*/
         if(d === 0){
-            block00();
+            block00(); // the functions are defined in the bottom
         }else if(d>0 && d<=93){
             block01();    
         } else if(d>=94 && d<=186){
@@ -69,51 +70,53 @@ function onDocumentReady() {
     })
 }
 let block = document.getElementById("block");
-function buttonRed(){
+
+function buttonRed(){ // the function for sending the value of the red button
     document.getElementById('sendtoSerial').value = '<red>';
     console.log("The red button is pressed");
     block.style.backgroundColor = "rgb(255,0,0)";
 };
-function buttonBlue(){
+function buttonBlue(){ // the function for sending the value of the blue button
     document.getElementById('sendtoSerial').value = '<blue>';
     console.log("The blue button is pressed");
     block.style.backgroundColor = "rgb(0,0,255)";
 };
-function buttonGreen(){
+function buttonGreen(){ // the function for sending the value of the green button
     document.getElementById('sendtoSerial').value = '<green>';
     console.log("The green button is pressed");
     block.style.backgroundColor = "rgb(0,255,0)";
 };
-function buttonYellow(){
+function buttonYellow(){ // the function for sending the value of the yellow button
     document.getElementById('sendtoSerial').value = '<yellow>';
     console.log("The yellow button is pressed");
     block.style.backgroundColor = "rgb(255,255,0)";
 };
-function buttonOrange(){
+function buttonOrange(){ // the function for sending the value of the orange button
     document.getElementById('sendtoSerial').value = '<orange>';
     console.log("The orange button is pressed");
     block.style.backgroundColor = "rgb(255,144,0)";
 }; 
-function buttonPink(){
+function buttonPink(){ // the function for sending the value of the pink button
     document.getElementById('sendtoSerial').value = '<pink>';
     console.log("The pink button is pressed");
     block.style.backgroundColor = "rgb(255, 105, 180)";
 };
-function buttonPurple(){
+function buttonPurple(){ // the function for sending the value of the purple button
     document.getElementById('sendtoSerial').value = '<purple>';
     console.log("The purple button is pressed");
     block.style.backgroundColor = "rgb(128,0,128)";
 };
-function buttonCyan(){
+function buttonCyan(){ // the function for sending the value of the cyan button
     document.getElementById('sendtoSerial').value = '<cyan>';
     console.log("The cyan button is pressed");
     block.style.backgroundColor = "rgb(0,128,128)";
 };
-function buttonBrown(){
+function buttonBrown(){ // the function for sending the value of the brown button
     document.getElementById('sendtoSerial').value = '<brown>';
     console.log("The brown button is pressed");
     block.style.backgroundColor = "rgb(139,69,19)";
 };
+// The following functions color the blocks according to the potentiometers value
 function block00(){
     block1.style.backgroundColor = "rgb(255, 255, 255)";
     block2.style.backgroundColor = "rgb(255, 255, 255)";
