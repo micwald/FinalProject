@@ -13,6 +13,15 @@ The demo consists of three bits: an Arduino sketch, a Node.js app, and a web app
 * The Arduino sketch sends/receives via serial over USB
 * A Node.js app connects to the computer's serial port. It's a webserver with websockets enabled. When serial data is received from the Arduino, it broadcasts it to all clients connected via websockets. When data is received on the websocket, it sends it to the Arduino. You can open the connection to your Node.js server from any number of web browsers, including mobile devices!
 
+What the project does?
+
+This project is exploring the relations between activity and the light in a chosen design setting which is a living room . The project is a merging project between physical prototyping and programming 2 from Malmö University.
+
+What is the project exploring
+
+The project explores a squishy way of interacting with lights.
+
+How users can get started with the project?
 
 # Setup and running
 
