@@ -27,26 +27,17 @@ In the directory you've got this sample:
 
 Hack away! Try making a simple command system so that a particular function runs on the Arduino when a certain command is sent from the browser, or making something happen in the browser based on a command sent from the Arduino.
 
-# Serial commands
 
-The Arduino sketch sends and receives commands in a simple string format:
+#####
 
-  <Text,Int,Float>
+This prototype has six buttons to be pressed. By using RGB LEDs the color will change depending on which button is pressed. When a button is held down, the LEDs start to blink.
 
-Eg:
-  <Hello,1,10.5>
+When we had a working arduino sketch we sent the data to our computer via the serial bridge. With JavaScript, we were be able to communicate and change the lights on our prototype, via the arduino board. We used Javascript and HTML to create a GUI to provide feedback for the user, when the buttons are pressed. GUI was styled in CSS.
 
-Commas , are used to separate each of the three parts, and the whole thing is enclosed in angled brackets < >.
 
-This simple format means you can easily test using Arduino's serial monitor, or send commands from Javascript code.
+The instructions above were taken from Clint Heyer's repository on GitHub (https://github.com/ClintH/interactivity/tree/master/websockets/serial-bridge) 
 
-# Read more
+Contributors:
+Michael Waldorff
 
-More on:
-* [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications)
 
-Bundles:
-* [reconnecting-websocket](https://github.com/pladaria/reconnecting-websocket) wrapper (v3.2.2)
-
-Credits:
-* Arduino serial I/O: http://forum.arduino.cc/index.php?topic=396450
