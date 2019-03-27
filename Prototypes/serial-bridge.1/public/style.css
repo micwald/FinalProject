@@ -1,0 +1,59 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+h1 {
+  color: darkred;
+}
+a, a:link, a:visited {
+  color: darkred;
+}
+a:hover {
+  color: black;
+}
+
+#lastMsg {
+  font-family: monospace;
+}
+
+#sentCommands {
+  overflow: scroll;
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid black;
+  background: white;
+}
+#ButtonPressed{
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  float: left;
+  margin: 30px;
+}
+#ButtonHeld{
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  float: left;
+  margin: 30px;
+}
+
+#colorOfButton{
+  border: 1px solid black;
+  float: left;
+  text-align: center;
+  margin: 10px;
+}
+
+#blinkingLight{
+  border: 1px solid black;
+  float: left;
+  text-align: center;
+  margin: 10px;
+}

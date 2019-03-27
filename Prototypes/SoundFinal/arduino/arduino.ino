@@ -85,13 +85,12 @@ void loop ()
     // Debug: print parsed command to serial
     //showParsedData();
     sensorValue = messageFromPC;
-    Serial.print("Overwriting the measured sensor value with message from PC");
-    Serial.println(sensorValue);
+    //Serial.print("Overwriting the measured sensor value with message from PC");
+    //Serial.println(sensorValue);
     newData = false;
   }
   
   if(sensorValue>580){
-    Serial.print("high");
 
     if(LEDStatus==false){
         LEDStatus=true;
@@ -104,7 +103,6 @@ void loop ()
         colorSetting=0;
     }
   }else if(sensorValue>570){
-    Serial.print("medium");
 
     if(LEDStatus==false){
         LEDStatus=true;
@@ -127,8 +125,6 @@ void loop ()
         colorSetting=0;
     }
     
-    
-    
   }
   
   
@@ -136,40 +132,41 @@ void loop ()
     case 0:{
       led.setPixelColor(0, 0, 0, 0);
        if(sensorValue>560){
-         Serial.print("Light Turned Off\n");
+         Serial.print("Off\n");
         }
       break;
     }
     case 1:{
       led.setPixelColor(0, 0, 255, 0);
-      Serial.print("Sound intensity is high: Light color is Red\n");
-      Serial.print("ColorSetting 1\n");
+      Serial.print("Red\n");
+      //Serial.print("ColorSetting 1\n");
   
       break;
       
     }
     case 2:{
       led.setPixelColor(0, 0, 0, 255);
-      Serial.print("Sound intensity is medium: Light color is blue\n");
-      Serial.print("ColorSetting 2\n");
+      Serial.print("Blue\n");
+      //Serial.print("ColorSetting 2\n");
      
       break;
       
     }
     case 3:{
       led.setPixelColor(0, 255, 0, 0);
-      Serial.print("Sound intensity is low: Light color is Green\n");
-      Serial.print("ColorSetting 3\n");
+      Serial.print("Green\n");
+     // Serial.print("Sound intensity is low: Light color is Green\n");
+     // Serial.print("ColorSetting 3\n");
       break;}
   }
  led.setBrightness(brightness);
  led.show();
  
  if(sensorValue>560){
-  Serial.print("SensorData=");
-  Serial.println(sensorValue);
-  Serial.print("Color Setting= ");
-  Serial.println (colorSetting, DEC);
+  //Serial.print("SensorData=");
+  //Serial.println(sensorValue);
+  //Serial.print("Color Setting= ");
+  //Serial.println (colorSetting, DEC);
   }
  
 }
