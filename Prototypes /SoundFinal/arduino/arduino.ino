@@ -38,45 +38,42 @@ void loop() {
 
 // Serial I/O based on example http://forum.arduino.cc/index.php?topic=396450
 
-// Serial communication
+// Serial communication parameters
 const byte numChars = 32;
 char receivedChars[numChars];
 char tempChars[numChars];
-int messageFromPC = 0;
-boolean newData = false;
-char redText[numChars] = {'r','e','d', '\0'};
+int messageFromPC = 0; //Parameter to receive input sound strength from 
+boolean newData = false; // Parameter to if any new data received from serial port
 
-//set the leds
+//set the led related paramters
 const byte numLeds = 1;
 const byte brightness = 100;
-Adafruit_NeoPixel led = Adafruit_NeoPixel(numLeds, 7);
+Adafruit_NeoPixel led = Adafruit_NeoPixel(numLeds, 7); // 7 here corresponds to Arduino port connected to the data in of the ws2182 LED
 
 
-int sensorPin = A5; // select the input pin for A0
-int ledPin = 7; // select the pin for the LED
+int sensorPin = A5; // select the analog input pin of Arduino connected to the sound sensor AO
+int ledPin = 7; // select the pin for the LED data-in
 int sensorValue = 0; // variable to store the value coming from the sensor
 boolean LEDStatus=false;
-int colorSetting = 0;
+int colorSetting = 0; // to set the color for the LED
 void setup ()
 {
- pinMode(ledPin, OUTPUT);
- Serial.begin (300);
- 
+  pinMode(ledPin, OUTPUT);
+  Serial.begin (300);
   led.begin();
   led.setPixelColor(1, 255, 0, 0);
   led.setBrightness(brightness);
   led.show();
-
   pinMode(sensorPin, INPUT);
 }
 void loop ()
 {
 
-  // Process serial communucation
+  // Process serial communication
   recvWithStartEndMarkers();
-  sensorValue = analogRead(sensorPin);
+  sensorValue = analogRead(sensorPin); // read Analog output of sensor, generates values between 0 and 1024
 
-  // If we received a command, process it
+  // If we received input from serial port, process it
   if (newData == true)
   {
     strcpy(tempChars, receivedChars);
@@ -84,12 +81,16 @@ void loop ()
     
     // Debug: print parsed command to serial
     //showParsedData();
-    sensorValue = messageFromPC;
+    sensorValue = messageFromPC;//Overwriting the measured sensor value with message from the serial port
     //Serial.print("Overwriting the measured sensor value with message from PC");
     //Serial.println(sensorValue);
     newData = false;
   }
   
+
+  // Code for changing the colorSetting based on measured/received sensor value
+  // if sensor value exceeds a predefined threshold, if the LED is OFF, assign the corresponding colorsetting value and send HIGH on data-in of WS2812 LED
+  // if sensor value exceeds a predefined threshold, if the LED is ON, assign the corresponding colorsetting value and send LOW on data-in of WS2812 LED 
   if(sensorValue>580){
 
     if(LEDStatus==false){
@@ -127,7 +128,7 @@ void loop ()
     
   }
   
-  
+  // Using switch statement to set the color of the LED 
  switch (colorSetting){
     case 0:{
       led.setPixelColor(0, 0, 0, 0);
@@ -162,15 +163,9 @@ void loop ()
  led.setBrightness(brightness);
  led.show();
  
- if(sensorValue>560){
-  //Serial.print("SensorData=");
-  //Serial.println(sensorValue);
-  //Serial.print("Color Setting= ");
-  //Serial.println (colorSetting, DEC);
-  }
- 
 }
 
+// processing the received serial data
 void recvWithStartEndMarkers()
 {
   static boolean recvInProgress = false;
@@ -181,10 +176,10 @@ void recvWithStartEndMarkers()
 
   while (Serial.available() > 0 && newData == false)
   {
-    rc = Serial.read();
+    rc = Serial.read();// read the received character from the serial port
 
     if (recvInProgress == true)
-    {
+    {// receive the data until ends with the character '>'
       if (rc != endMarker)
       {
         receivedChars[ndx] = rc;
@@ -204,7 +199,7 @@ void recvWithStartEndMarkers()
       }
     }
 
-    else if (rc == startMarker)
+    else if (rc == startMarker)// after the first  '<' characters receive the data
     {
       recvInProgress = true;
     }
@@ -214,9 +209,7 @@ void recvWithStartEndMarkers()
 void parseData()
 {                   // split the data into its parts
   char *strtokIndx; // this is used by strtok() as an index
-
   strtokIndx = strtok(tempChars, ","); // get the first part - the string
- 
   messageFromPC = atoi(strtokIndx); // convert this part to an integer
   strtokIndx = strtok(NULL, ",");   // this continues where the previous call left off
 }
